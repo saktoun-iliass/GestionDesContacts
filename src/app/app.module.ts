@@ -11,6 +11,8 @@ import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import { NouveauContactComponent } from './nouveau-contact/nouveau-contact.component';
 import { EditerContactComponent } from './editer-contact/editer-contact.component';
 import {TextMaskModule} from "angular2-text-mask";
+import {BootstrapModalModule} from "ng2-bootstrap-modal";
+import {ConfirmComponent} from "./confirm/confirm.component";
 
 const appRoutes:Routes=[
   {path:'about',component:AboutComponent},
@@ -25,7 +27,8 @@ const appRoutes:Routes=[
     ContactsComponent,
     AboutComponent,
     NouveauContactComponent,
-    EditerContactComponent
+    EditerContactComponent,
+    ConfirmComponent
   ],
   imports: [
     FormsModule,
@@ -33,9 +36,13 @@ const appRoutes:Routes=[
     HttpModule,
     ReactiveFormsModule,
     TextMaskModule,
+    BootstrapModalModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ContactService],
+  entryComponents: [
+    ConfirmComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

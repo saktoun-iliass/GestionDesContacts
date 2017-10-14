@@ -3,6 +3,8 @@ import {Http} from "@angular/http";
 import "rxjs/add/operator/map";
 import {ContactService} from "../service/contact.service";
 import {Contact} from "../../model/model.contact";
+import {DialogService} from "ng2-bootstrap-modal";
+import {ConfirmComponent} from "../confirm/confirm.component";
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
@@ -15,8 +17,7 @@ export class ContactsComponent implements OnInit {
   pageCourante:number=0;
   size:number=5;
   pages:Array<number>;
-  supprimer:boolean=false;
-  constructor(private http:Http,private contactService:ContactService) { }
+  constructor(private http:Http,private contactService:ContactService,private dialogService: DialogService) { }
 
   ngOnInit() {
 
@@ -42,18 +43,30 @@ this.chercher();
 
   supprimerContact(contact:Contact)
   {
-this.supprimer=true;
-    this.contactService.supprimerContact(contact).subscribe(data=>
+
+this.dialogService.addDialog(ConfirmComponent, {
+  title: 'Suppression',
+  message: 'Voulez vous vraiment supprimer ce contact ?'
+}).subscribe(isConfirmed=>
+  {
+    if(isConfirmed)
     {
-      this.pageContacts.content.splice(
-        this.pageContacts.content.indexOf(contact),1
-      );
-      this.supprimer=false;
-    },err=>
-    {
-      this.supprimer=false;
-      console.log(err);
-    })
+      this.contactService.supprimerContact(contact).subscribe(data=>
+      {
+        this.pageContacts.content.splice(
+          this.pageContacts.content.indexOf(contact),1
+        );
+      },err=>
+      {
+        console.log(err);
+      })
+    }
+    else{
+    }
+  }
+
+)
+
 
   }
 

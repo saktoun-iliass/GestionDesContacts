@@ -29,7 +29,7 @@
     <td>{{contact.prenom}}</td>
     <td>{{contact.email}}</td>
     <td width="200"><a [routerLink]="['/modifierContact', contact.id]" class="btn btn-success">Editer</a>
-        <a (click)="supprimerContact(contact)" class="btn btn-danger" [ngClass]="{'not-active': supprimer}" >Supprimer</a>
+        <a (click)="supprimerContact(contact)" class="btn btn-danger"  >Supprimer</a>
 
     </td>
   </tr>
