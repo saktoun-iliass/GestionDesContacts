@@ -1,0 +1,57 @@
+<div class="bs-docs-section" >
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h2 id="forms">Modifier contact</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="well bs-component">
+        <form class="form-horizontal" #form="ngForm" (ngSubmit)="modifierContact()">
+          <fieldset>
+            <legend>Contact</legend>
+            <div class="form-group">
+              <label for="inputNom" class="col-lg-2 control-label">Nom</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputNom" placeholder="Nom" [(ngModel)]="contact.nom" name="Nom" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPrenom" class="col-lg-2 control-label">Prénom</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom" [(ngModel)]="contact.prenom" name="prenom" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ddn" class="col-lg-2 control-label">Date de naissance</label>
+              <div class="col-lg-10">
+                <input type="DATE" class="form-control" id="ddn" placeholder="Date de naissance" [(ngModel)]="contact.dateNaissance" name="dateNaissance" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email" [(ngModel)]="contact.email" name="email" required email>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tel" class="col-lg-2 control-label">Télé</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="tel" placeholder="Télé" [(ngModel)]="contact.tel" name="tel">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Modifier</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

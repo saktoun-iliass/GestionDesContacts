@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-10"><h2>Liste des contact</h2></div>
+</div>
+<div class="row" >
+  <div class="col-lg-2">
+<div class="form-group ">
+  <input class="form-control" id="focusedInput" type="text" placeholder="Mot clé" [(ngModel)]="motCle">
+</div>
+  </div>
+    <div class="col-lg-2">
+      <a class="btn btn-primary" (click)="chercher()">Chercher</a>
+    </div>
+
+</div>
+<table class="table table-striped table-hover ">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contact of pageContacts?.content">
+    <td>{{contact.id}}</td>
+    <td>{{contact.nom}}</td>
+    <td>{{contact.prenom}}</td>
+    <td>{{contact.email}}</td>
+    <td width="200"><a [routerLink]="['/modifierContact', contact.id]" class="btn btn-success">Editer</a>
+        <a (click)="supprimerContact(contact)" class="btn btn-danger" [ngClass]="{'not-active': supprimer}" >Supprimer</a>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+<ul class="pagination">
+  <li class="disabled"><a href="#">&laquo;</a></li>
+  <li *ngFor="let p of pages;let i=index" [ngClass]="{active: i==pageCourante}"><a class="clickable" (click)="gotoPage(i)">{{i}}</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>

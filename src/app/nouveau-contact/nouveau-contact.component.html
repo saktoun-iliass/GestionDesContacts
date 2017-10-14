@@ -1,0 +1,133 @@
+<div class="bs-docs-section" *ngIf="mode==1">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h2 id="forms">Nouveau contact</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="well bs-component">
+          <form class="form-horizontal" #formContact="ngForm" [formGroup]="contactForm" (ngSubmit)="onSaveContact()">
+          <fieldset>
+            <legend>Contact</legend>
+            <div class="form-group">
+              <label for="inputNom" class="col-lg-2 control-label">Nom</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputNom" placeholder="Nom" formControlName="nom" >
+              </div>
+            </div>
+            <div *ngIf="formErrors.nom" class="alert alert-danger col-lg-10 col-lg-offset-2">
+              {{formErrors.nom}}
+            </div>
+            <div class="form-group">
+              <label for="inputPrenom" class="col-lg-2 control-label">Prénom</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputPrenom" placeholder="Prénom" formControlName="prenom">
+              </div>
+            </div>
+            <div *ngIf="formErrors.prenom" class="alert alert-danger col-lg-10 col-lg-offset-2">
+              {{formErrors.prenom}}
+            </div>
+            <div class="form-group">
+              <label for="ddn" class="col-lg-2 control-label">Date de naissance</label>
+              <div class="col-lg-10">
+                <input type="DATE" class="form-control" id="ddn" placeholder="Date de naissance"  formControlName="dateNaissance">
+              </div>
+            </div>
+            <div *ngIf="formErrors.dateNaissance" class="alert alert-danger col-lg-10 col-lg-offset-2">
+              {{formErrors.dateNaissance}}
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email"  formControlName="email">
+              </div>
+            </div>
+            <div *ngIf="formErrors.email" class="alert alert-danger col-lg-10 col-lg-offset-2">
+              {{formErrors.email}}
+            </div>
+            <div class="form-group">
+              <label for="tel" class="col-lg-2 control-label">Télé</label>
+              <div class="col-lg-10">
+                <input type="text" [textMask]="{mask: mask}" [(ngModel)]="myModel" class="form-control" id="tel"   formControlName="tel">
+              </div>
+            </div>
+            <div *ngIf="formErrors.tel" class="alert alert-danger col-lg-10 col-lg-offset-2">
+              {{formErrors.tel}}
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary" [disabled]="!formContact.form.valid || nouveauC" >Ajouter</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bs-docs-section" *ngIf="mode==2">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h2 id="forms2">Confirmation</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6  col-lg-offset-3">
+      <div class="well bs-component">
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Contact</legend>
+            <div class="form-group">
+              <label for="inputNom" class="col-lg-3 control-label">ID</label>
+              <div class="col-lg-3">
+                <label for="inputNom" class=" control-label">{{contact.id}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputNom" class="col-lg-3 control-label">Nom</label>
+              <div class="col-lg-3">
+                <label for="inputNom" class="control-label">{{contact.nom}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPrenom" class="col-lg-3 control-label">Prénom</label>
+              <div class="col-lg-3">
+                <label for="inputPrenom" class="control-label">{{contact.prenom}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ddn" class="col-lg-3 control-label">Date de naissance</label>
+              <div class="col-lg-3">
+                <label for="ddn" class="control-label">{{contact.dateNaissance | date}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-3 control-label">Email</label>
+              <div class="col-lg-3">
+                <label for="inputEmail" class="control-label">{{contact.email}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tel" class="col-lg-3 control-label">Télé</label>
+              <div class="col-lg-3">
+                <label for="inputEmail" class="col-lg-3 control-label">{{contact.tel}}</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button (click)="nouveauContact()" class="btn btn-primary" >Nouveau contact</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
