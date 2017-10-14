@@ -10,6 +10,9 @@ import {ContactService} from "../service/contact.service";
 })
 export class EditerContactComponent implements OnInit {
   contact:Contact=new Contact();
+  public myModel = '';
+  public mask = [/[0]/, ' ', /\d/, ' ', /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+
   constructor(private activatedRoute:ActivatedRoute,private contactService:ContactService,     private route :Router) {
     console.log()
 

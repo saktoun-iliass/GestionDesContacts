@@ -40,7 +40,7 @@
             <div class="form-group">
               <label for="tel" class="col-lg-2 control-label">Télé</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" id="tel" placeholder="Télé" [(ngModel)]="contact.tel" name="tel">
+                <input type="text" class="form-control" [textMask]="{mask: mask}"id="tel" placeholder="Télé" [(ngModel)]="contact.tel" name="tel">
               </div>
             </div>
 

@@ -121,6 +121,7 @@ export class NouveauContactComponent implements OnInit {
     this.contactService.saveContact(this.contact).subscribe(data=>
       {
         this.contact=data;
+        console.log( this.contact);
         this.mode=2;
       },
       err=>
